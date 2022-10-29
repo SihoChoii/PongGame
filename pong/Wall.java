@@ -1,10 +1,10 @@
 package pong;
 
+import java.awt.Color;
+
 import java.awt.Rectangle;
 
 import javax.lang.model.util.ElementScanner14;
-
-import pong.Boundary;
 
 public class Wall extends Rectangle 
 {
@@ -19,14 +19,15 @@ public class Wall extends Rectangle
 
     public void move(boolean keyUp, boolean keyDown)
     {
-        if (boundary.isOutOfBoundsY(this) == 0)
-        {
-            if (keyUp) setLocation((int)getX(), (int)getY() + yVelocity);
-            if (keyDown) setLocation((int)getX(), (int)getY() - yVelocity);
-        } else if (boundary.isOutOfBoundsY(this) == 1) {
-            if (keyDown) setLocation((int)getX(), (int)getY() - yVelocity);
-        } else if (boundary.isOutOfBoundsY(this) == 2) {
-            if (keyUp) setLocation((int)getX(), (int)getY() + yVelocity);
+        if (keyUp && boundary.isOutOfBoundsY(this) != 1) {
+            setLocation((int)getX(), (int)getY() - yVelocity);
+        } else if (keyUp && boundary.isOutOfBoundsY(this) != -1) {
+            setLocation((int)getX(), (int)getY() + yVelocity);
+        }
+        if (keyDown && boundary.isOutOfBoundsY(this) != -1) {
+            setLocation((int)getX(), (int)getY() + yVelocity);
+        } else if (keyDown && boundary.isOutOfBoundsY(this) != 1) {
+            setLocation((int)getX(), (int)getY() - yVelocity);
         }
     }
 }

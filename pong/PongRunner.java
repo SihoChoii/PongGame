@@ -18,6 +18,8 @@ public class PongRunner extends GDV5
     Wall wall1 = new Wall(12, 0 + 45, boundary);
     Wall wall2 = new Wall(12, boundary.getMaxWindowX() - 45, boundary);
 
+
+
     public static void main(String[] args)
     {
         PongRunner runner = new PongRunner(); // the parameter is the fps
@@ -27,7 +29,7 @@ public class PongRunner extends GDV5
     @Override
 	public void update() 
 	{ 
-        ball1.move();
+        ball1.move(wall1, wall2);
         wall1.move(KeysPressed[KeyEvent.VK_W], KeysPressed[KeyEvent.VK_S]);
         wall2.move(KeysPressed[KeyEvent.VK_UP], KeysPressed[KeyEvent.VK_DOWN]);
     }

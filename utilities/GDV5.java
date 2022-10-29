@@ -242,6 +242,13 @@ public abstract class GDV5 extends Canvas implements Runnable, KeyListener {
 		PADDING = paddingVal;
 	}
 
+	public static void delay(int time) {
+		try {
+			Thread.sleep(time);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
 }
 
 

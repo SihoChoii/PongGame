@@ -30,8 +30,14 @@ public class Boundary {
         if (wall.getY() > MAX_WINDOW_Y - wall.getHeight()){
             return 1;
         } else if (wall.getY() < 0) {
-            return 2;
+            return -1;
         } else return 0;
+    }
+
+    public boolean isTouchingWall(Ball ball, Wall wall) {
+        if (ball.intersects(wall)) {
+            return true;
+        } else return false;
     }
 
     public int getxCenter() {
