@@ -1,18 +1,28 @@
 package pong;
 
 import java.awt.Rectangle;
+import pong.Boundary;
 
 public class Ball extends Rectangle 
 {
     private int xVelocity, yVelocity;
+    private Boundary boundary;
 
-	public Ball(int size, int x, int y)
+	public Ball(int size, Boundary boundary)
 	{
-		super(x, y, size, size);
+		super(boundary.getxCenter(), boundary.getyCenter(), size, size);
+        this.boundary = boundary;
 	}
 
     public void move()
     {
+        if (boundary.isOutOfBoundX(this)) {
+            xVelocity *= -1;
+        }
+        if (boundary.isOutOfBoundY(this))
+        {
+            yVelocity *= -1;
+        }
         setLocation((int)getX() + xVelocity, (int)getY() + yVelocity);
     }
 
