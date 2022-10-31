@@ -40,6 +40,12 @@ public class Boundary {
         } else return false;
     }
 
+    public boolean isHigher(Ball ball, Wall wall) {
+        if (ball.getY() > wall.getY()) {
+            return true;
+        } else return false;
+    }
+
     public int getxCenter() {
         return xCenter;
     }
