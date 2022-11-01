@@ -9,19 +9,11 @@ public class Wall extends Rectangle
     private int yVelocity = 8;
     private int npcYVelocity = 6;
     private Boundary boundary;
-    private Ball ball1;
 
 	public Wall(int size, int x, Boundary boundary)
 	{
 		super(x, boundary.getyCenter(), size, size*9);
         this.boundary = boundary;
-	}
-
-    public Wall(int size, int x, Boundary boundary, Ball ball1)
-	{
-		super(x, boundary.getyCenter(), size, size*9);
-        this.boundary = boundary;
-        this.ball1 = ball1;
 	}
 
     public void move(boolean keyUp, boolean keyDown)
@@ -38,11 +30,11 @@ public class Wall extends Rectangle
         }
     }
 
-    public void moveNPC()
+    public void moveNPC(Ball ball1)
     {
         if (boundary.isHigher(ball1, this))
         {
-            setLocation((int)getX(), (int)getY() - npcYVelocity);
-        } else setLocation((int)getX(), (int)getY() + npcYVelocity);
+            setLocation((int)getX(), (int)getY() + npcYVelocity);
+        } else setLocation((int)getX(), (int)getY() - npcYVelocity);
     }
 }

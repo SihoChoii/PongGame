@@ -4,8 +4,8 @@ import java.awt.Rectangle;
 
 public class Ball extends Rectangle 
 {
-    private int xVelocity = 6;
-    private int yVelocity = 6;
+    private int xVelocity = 7;
+    private int yVelocity = 7;
     private Boundary boundary;
 
 	public Ball(int size, Boundary boundary)

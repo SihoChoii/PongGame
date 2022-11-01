@@ -30,7 +30,7 @@ public class GameRunning
         // update game
         ball1.move(wall1, wall2);
         wall1.move(isPlayer1Up, isPlayer1Down);
-        wall2.moveNPC();
+        wall2.moveNPC(ball1);
     }
 
     // Draw game

@@ -62,6 +62,9 @@ public class PongRunner extends GDV5
             case 4:
                 // Winner Screen
                 break;
+            default:
+                // System.out.println("Default case reached");
+                break;
         }
     }
 
