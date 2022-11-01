@@ -27,10 +27,9 @@ public class PongRunner extends GDV5
     int gameState = 3;
 
     // Create these in menu screen
-    GameRunning gameInstance1 = new GameRunning(ball1, wall1, wall2);
-    GameRunning gameInstance2 = new GameRunning(ball1, wall1, wall2);
+    GameRunning gameInstance1 = new GameRunning(ball1, wall1, wall2, boundary);
+    GameRunning gameInstance2 = new GameRunning(ball1, wall1, wall2, boundary);
     //KeysPressed[KeyEvent.VK_DOWN]
-
 
     public static void main(String[] args)
     {

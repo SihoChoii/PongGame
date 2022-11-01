@@ -16,12 +16,11 @@ public class Ball extends Rectangle
 
     public boolean bounceLogic(Wall wall1, Wall wall2)
     {
-        if (boundary.isOutOfBoundX(this)) {
+        if (boundary.isOutOfBoundX(this)%2==0) {
             xVelocity *= -1;
             return true;
         }
-        if (boundary.isOutOfBoundY(this))
-        {
+        if (boundary.isOutOfBoundY(this)) {
             yVelocity *= -1;
             return true;
         }
@@ -49,5 +48,12 @@ public class Ball extends Rectangle
     public void setyVelocity(int yVelocity) 
     {
         this.yVelocity = yVelocity;
+    }
+
+    public void reset()
+    {
+        setLocation(boundary.getxCenter(), boundary.getyCenter());
+        setxVelocity(7);
+        setyVelocity(7);
     }
 }

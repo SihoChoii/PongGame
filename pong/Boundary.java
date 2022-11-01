@@ -7,40 +7,50 @@ public class Boundary {
     private static int xCenter;
     private static int yCenter;
 
-    public Boundary(int MAX_WINDOW_X, int MAX_WINDOW_Y) {
+    public Boundary(int MAX_WINDOW_X, int MAX_WINDOW_Y) 
+    {
         Boundary.MAX_WINDOW_X = MAX_WINDOW_X;
         Boundary.MAX_WINDOW_Y = MAX_WINDOW_Y;
         xCenter = MAX_WINDOW_X / 2;
         yCenter = MAX_WINDOW_Y / 2;
     }
 
-    public boolean isOutOfBoundX(Ball ball) {
-        if (ball.getX() < 0 || ball.getX() > MAX_WINDOW_X - ball.getWidth()){
-            return true;
-        } else return false;
+    public int isOutOfBoundX(Ball ball) 
+    {
+        if (ball.getX() < 0){
+            return 2;
+        }
+        if (ball.getX() > MAX_WINDOW_X - ball.getWidth()) {
+            return 4;
+        } else return 1;
     }
 
-    public boolean isOutOfBoundY(Ball ball) {
+    public boolean isOutOfBoundY(Ball ball) 
+    {
         if (ball.getY() < 0 || ball.getY() > MAX_WINDOW_Y - ball.getHeight()) {
             return true;
         } else return false;
     }
 
-    public int isOutOfBoundsY(Wall wall) {
-        if (wall.getY() > MAX_WINDOW_Y - wall.getHeight()){
+    public int isOutOfBoundsY(Wall wall) 
+    {
+        if (wall.getY() > MAX_WINDOW_Y - wall.getHeight())
+        {
             return 1;
         } else if (wall.getY() < 0) {
             return -1;
         } else return 0;
     }
 
-    public boolean isTouchingWall(Ball ball, Wall wall) {
+    public boolean isTouchingWall(Ball ball, Wall wall) 
+    {
         if (ball.intersects(wall)) {
             return true;
         } else return false;
     }
 
-    public boolean isHigher(Ball ball, Wall wall) {
+    public boolean isHigher(Ball ball, Wall wall) 
+    {
         if (ball.getY() > wall.getY()) {
             return true;
         } else return false;

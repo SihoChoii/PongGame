@@ -8,13 +8,17 @@ public class GameRunning
 
     private Ball ball1;
     private Wall wall1, wall2;
+    private Score score = new Score();
+    private Boundary boundary;
 
-    public GameRunning(Ball ball1, Wall wall1, Wall wall2)
+    public GameRunning(Ball ball1, Wall wall1, Wall wall2, Boundary boundary)
     {
         // game running
         this.ball1 = ball1;
         this.wall1 = wall1;
         this.wall2 = wall2;
+        this.boundary = boundary;
+        // score = new Score();
     }
 
     public void update(boolean isPlayer1Up, boolean isPlayer1Down, boolean isPlayer2Up, boolean isPlayer2Down)
@@ -23,6 +27,17 @@ public class GameRunning
         ball1.move(wall1, wall2);
         wall1.move(isPlayer1Up, isPlayer1Down);
         wall2.move(isPlayer2Up, isPlayer2Down);
+
+        if (boundary.isOutOfBoundX(ball1)==4) 
+        {
+            score.addScore1();
+            ball1.reset();
+        }
+        else if (boundary.isOutOfBoundX(ball1)==2) 
+        {
+            score.addScore2();
+            ball1.reset();
+        }
     }
 
     public void update(boolean isPlayer1Up, boolean isPlayer1Down)
@@ -31,6 +46,17 @@ public class GameRunning
         ball1.move(wall1, wall2);
         wall1.move(isPlayer1Up, isPlayer1Down);
         wall2.moveNPC(ball1);
+
+        if (boundary.isOutOfBoundX(ball1)==2) 
+        {
+            score.addScore1();
+            ball1.reset();
+        }
+        else if (boundary.isOutOfBoundX(ball1)==4) 
+        {
+            score.addScore2();
+            ball1.reset();
+        }
     }
 
     // Draw game
@@ -43,5 +69,7 @@ public class GameRunning
         // Walls
         win.draw(wall1);
         win.draw(wall2);
+        // Score
+        score.drawScore(win);
     }
 }
