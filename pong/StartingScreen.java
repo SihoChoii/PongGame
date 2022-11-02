@@ -38,10 +38,17 @@ public class StartingScreen
             paintbrush.drawString("2", boundary.getxCenter(), boundary.getyCenter() + 50);
         } else if (timer>=fps*2 && timer<fps*3) {
             paintbrush.drawString("1", boundary.getxCenter(), boundary.getyCenter() + 50);
-        } else if (timer>fps*3) {
-            paintbrush.drawString("GO!", boundary.getxCenter(), boundary.getyCenter() + 50);
+        } else if (timer>=fps*3 && timer<fps*4) {
+            paintbrush.drawString("GO!", boundary.getxCenter(), boundary.getyCenter() + 50);;
+        } else if (timer>=fps*4) {
+            resetTimer();
             return true;
         }
         return false;
+    }
+
+    public void resetTimer()
+    {
+        timer = 0;
     }
 }

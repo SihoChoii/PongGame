@@ -11,7 +11,9 @@ import utilities.GDV5;
 
 public class PongRunner extends GDV5
 {
-    int fps = 60;
+    static int fps = 60;
+
+    // Scenes
     Boundary boundary = new Boundary(getMaxWindowX(), getMaxWindowY());
     StartingScreen startingScreen = new StartingScreen(fps, boundary);
     // Menu menu = new Menu(boundary);
@@ -81,7 +83,7 @@ public class PongRunner extends GDV5
                 break;
             case 1:
                 // Starting Screen
-                if(startingScreen.drawCountDown(win)) gameState = 2;
+                if(startingScreen.drawCountDown(win)) gameState = 3;
                 break;
             case 2:
                 // Game Instance 1 Running
