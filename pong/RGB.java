@@ -20,7 +20,7 @@ public class RGB
         this.sweepDirection = sweepDirection;
     }
 
-    public void update()
+    public void rgbSweepUpdate()
     {
         sweep += sweepDirection * sweepSpeed;
         if (sweep > sweepMax) {
@@ -32,9 +32,65 @@ public class RGB
         }
     }
 
+    public void rgbPairsUpdate()
+    {
+        if (r > 0 && b == 0)
+        {
+            r--;
+            g++;
+        }
+        if (g > 0 && r == 0)
+        {
+            g--;
+            b++;
+        }
+        if (b > 0 && g == 0)
+        {
+            b--;
+            r++;
+        }
+    }
+
+
+    // Getters
     public int getSweep()
     {
         return sweep;
     }
 
+    public int getR()
+    {
+        return r;
+    }
+
+    public int getG()
+    {
+        return g;
+    }
+
+    public int getB()
+    {
+        return b;
+    }
+
+    // Setters
+    public void setSweep(int sweep)
+    {
+        this.sweep = sweep;
+    }
+
+    public void setR(int r)
+    {
+        this.r = r;
+    }
+
+    public void setG(int g)
+    {
+        this.g = g;
+    }
+
+    public void setB(int b)
+    {
+        this.b = b;
+    }
 }
