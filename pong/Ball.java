@@ -1,18 +1,37 @@
 package pong;
 
 import java.awt.Rectangle;
+import java.io.File;
+
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 
 public class Ball extends Rectangle 
 {
-    private int xVelocity = 7;
-    private int yVelocity = 7;
+    // 9
+    private int xVelocity = 9;
+    private int yVelocity = 9;
+    private int xVelocityO = 9;
+    private int yVelocityO = 9;
     private Boundary boundary;
+    private SFX sfx = new SFX();
+    private int flipperVar = 1;
 
-	public Ball(int size, Boundary boundary)
+	public Ball(int size, int xPos, int yPosm, Boundary boundary)
 	{
 		super(boundary.getxCenter(), boundary.getyCenter(), size, size);
         this.boundary = boundary;
 	}
+
+    public void changeSpeed(int xSpeed)
+    {
+        xVelocity = xSpeed;
+    }
+
+    public int getSpeed()
+    {
+        return xVelocity;
+    }
 
     public boolean bounceLogic(Wall wall1, Wall wall2)
     {
@@ -35,11 +54,15 @@ public class Ball extends Rectangle
     {
         if (bounceLogic(wall1, wall2)) 
         {
-            // try {AudioPlayer soundFx = new AudioPlayer("blip1.wav"); soundFx.playFor(1);} catch (Exception ex){ex.printStackTrace();}
+            sfx.blip1();
         }
         setLocation((int)getX() + xVelocity, (int)getY() + yVelocity);
     }
 
+    // SFX
+
+
+    // Getters/Setters
     public void setxVelocity(int xVelocity) 
     {
         this.xVelocity = xVelocity;
@@ -53,7 +76,8 @@ public class Ball extends Rectangle
     public void reset()
     {
         setLocation(boundary.getxCenter(), boundary.getyCenter());
-        setxVelocity(7);
-        setyVelocity(7);
+        flipperVar *= -1;
+        setxVelocity(xVelocityO*flipperVar);
+        setyVelocity(yVelocityO);
     }
 }
