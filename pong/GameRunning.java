@@ -8,8 +8,8 @@ public class GameRunning
 
     private Ball ball1;
     private Wall wall1, wall2;
-    private Score score = new Score();
     private Boundary boundary;
+    private Score score;
 
     public GameRunning(Ball ball1, Wall wall1, Wall wall2, Boundary boundary)
     {
@@ -18,7 +18,7 @@ public class GameRunning
         this.wall1 = wall1;
         this.wall2 = wall2;
         this.boundary = boundary;
-        // score = new Score();
+        score = new Score(boundary);
     }
 
     public void update(boolean isPlayer1Up, boolean isPlayer1Down, boolean isPlayer2Up, boolean isPlayer2Down)

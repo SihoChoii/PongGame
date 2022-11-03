@@ -5,7 +5,7 @@ import java.awt.Color;
 public class RGB
 {
     // generating a number sweep betwen 0 and 255
-    private int r = 0;
+    private int r = 255;
     private int g = 0;
     private int b = 0;
     private int sweep = 0;

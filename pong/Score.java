@@ -9,14 +9,20 @@ public class Score
 {
     private int score1 = 0;
     private int score2 = 0;
+    private Boundary boundary;
+
+    public Score(Boundary boundary)
+    {
+        this.boundary = boundary;
+    }
 
     // Score drawer
     public void drawScore(Graphics2D paintbrush)
     {
         paintbrush.setColor(Color.white);
         paintbrush.setFont(new Font("Arial", Font.BOLD, 50));
-        paintbrush.drawString("Player 1: " + score1, 10, 40);
-        paintbrush.drawString("Player 2: " + score2, 10, 80);
+        paintbrush.drawString("Player 1: " + score1, 100, 40);
+        paintbrush.drawString("Player 2: " + score2, boundary.getxCenter()-150, 40);
     }
 
     public void addScore1()

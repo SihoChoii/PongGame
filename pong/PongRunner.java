@@ -11,17 +11,17 @@ import utilities.GDV5;
 
 public class PongRunner extends GDV5
 {
-    static int fps = 60;
+    private static int fps = 60;
 
     // Scenes
-    Boundary boundary = new Boundary(getMaxWindowX(), getMaxWindowY());
-    StartingScreen startingScreen = new StartingScreen(fps, boundary);
-    // Menu menu = new Menu(boundary);
+    private Boundary boundary = new Boundary(getMaxWindowX(), getMaxWindowY());
+    private StartingScreen startingScreen = new StartingScreen(fps, boundary);
+    private Menu menu = new Menu(boundary);
 
     // Game Elements
-    Ball ball1 = new Ball(45, boundary);
-    Wall wall1 = new Wall(12, 0 + 45, boundary);
-    Wall wall2 = new Wall(12, boundary.getMaxWindowX() - 45, boundary);
+    private Ball ball1 = new Ball(45, boundary);
+    private Wall wall1 = new Wall(12, 0 + 45, boundary);
+    private Wall wall2 = new Wall(12, boundary.getMaxWindowX() - 45, boundary);
 
     // Game Screens
     // 0 = Menu
@@ -29,11 +29,15 @@ public class PongRunner extends GDV5
     // 2 = Game Instance 1 Running
     // 3 = Game Instance 2 Running
     // 4 = Game Winner Screen
-    int gameState = 1;
+    // 5 = Game Selection Screen
+    // 6 = Pause Screen
+    // 7 = How To Play Screen
+    // 8 = Settings Screen
+    private int gameState = 0;
 
     // Create these in menu screen
-    GameRunning gameInstance1 = new GameRunning(ball1, wall1, wall2, boundary);
-    GameRunning gameInstance2 = new GameRunning(ball1, wall1, wall2, boundary);
+    private GameRunning gameInstance1 = new GameRunning(ball1, wall1, wall2, boundary);
+    private GameRunning gameInstance2 = new GameRunning(ball1, wall1, wall2, boundary);
     //KeysPressed[KeyEvent.VK_DOWN]
 
     public static void main(String[] args)
@@ -49,6 +53,7 @@ public class PongRunner extends GDV5
         {
             case 0:
                 // Menu
+                gameState = menu.update(KeysPressed[KeyEvent.VK_UP], KeysPressed[KeyEvent.VK_DOWN],  KeysPressed[KeyEvent.VK_SPACE]);
                 break;
             case 1:
                 // Starting Screen
@@ -80,6 +85,7 @@ public class PongRunner extends GDV5
         {
             case 0:
                 // Menu
+                menu.draw(win);
                 break;
             case 1:
                 // Starting Screen
